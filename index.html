@@ -6,16 +6,28 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Student Income Refer</title>
 
+<meta name="description" content="Student Income অ্যাপ ডাউনলোড করুন। রেফার করুন, আয় করুন।">
+
 <meta property="og:type" content="website">
 <meta property="og:title" content="Student Income App Download">
-
+<meta property="og:description" content="Student Income অ্যাপ ডাউনলোড করুন এবং রেফার করে আয় করুন।">
 <meta property="og:url" content="https://student-income-bd.github.io/download/">
-<meta property="og:image" content="https://ibb.co.com/Pv2Lhzkc">
+<meta property="og:image" content="https://tetnykcmkukjukttluks.supabase.co/storage/v1/object/public/Student%20wallet/file_0000000021fc8208bc1d45360b71e798.png">
+<meta property="og:image:secure_url" content="https://tetnykcmkukjukttluks.supabase.co/storage/v1/object/public/Student%20wallet/file_0000000021fc8208bc1d45360b71e798.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Student Income Referral Banner">
+
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Student Income App Download">
+<meta name="twitter:description" content="Student Income অ্যাপ ডাউনলোড করুন এবং রেফার করে আয় করুন।">
+<meta name="twitter:image" content="https://tetnykcmkukjukttluks.supabase.co/storage/v1/object/public/Student%20wallet/file_0000000021fc8208bc1d45360b71e798.png">
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:flex;justify-content:center;align-items:center;background:#fff}
+body{
+margin:0;min-height:100vh;display:flex;
+justify-content:center;align-items:center;background:#fff
+}
 .image-wrap{position:relative;width:100%;max-width:600px}
 .image-wrap img{display:block;width:100%;height:auto}
 .download-btn{
@@ -53,7 +65,7 @@ btn.textContent='Downloading...';
 
 try{
 const response=await fetch(apk);
-if(!response.ok)throw new Error();
+if(!response.ok)throw new Error('Download failed');
 
 const blob=await response.blob();
 const url=URL.createObjectURL(blob);
