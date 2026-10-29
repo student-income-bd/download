@@ -20,24 +20,13 @@ body{margin:0;min-height:100vh;display:flex;justify-content:center;align-items:c
 .image-wrap{position:relative;width:100%;max-width:600px}
 .image-wrap img{display:block;width:100%;height:auto}
 .download-btn{
-position:absolute;
-top:34%;
-left:50%;
+position:absolute;top:35%;left:50%;
 transform:translate(-50%,-50%);
-width:340px;
-max-width:85%;
-padding:9px 0;
-font-size:18px;
-font-weight:bold;
-background:#00875F;
-color:#fff;
-border:0;
-border-radius:8px;
-text-decoration:none;
-text-align:center;
-box-shadow:0 4px 12px #0004;
-cursor:pointer;
-white-space:nowrap
+width:340px;max-width:85%;
+padding:9px 0;font-size:18px;font-weight:bold;
+background:#00875F;color:#fff;border:0;border-radius:8px;
+text-decoration:none;text-align:center;
+box-shadow:0 4px 12px #0004;cursor:pointer;white-space:nowrap
 }
 .download-btn:active{transform:translate(-50%,-50%) scale(.96)}
 </style>
@@ -46,39 +35,47 @@ white-space:nowrap
 
 <div class="image-wrap">
 <img src="IMG_20261028_235622.png" alt="Student Income">
-<a class="download-btn" href="https://tetnykcmkukjukttluks.supabase.co/storage/v1/object/public/apk/student-income-v3.apk">Download</a>
+<a class="download-btn"
+href="https://tetnykcmkukjukttluks.supabase.co/storage/v1/object/public/apk/student-income-v3.apk">
+Download
+</a>
 </div>
 
 <script>
 const btn=document.querySelector('.download-btn');
 const apk=btn.href;
 
-btn.addEventListener('click',async e=>{
+btn.addEventListener('click',async function(e){
 e.preventDefault();
+
 if(btn.dataset.busy==='1')return;
 btn.dataset.busy='1';
 btn.textContent='Downloading...';
 
 try{
-const res=await fetch(apk);
-if(!res.ok)throw Error();
-const blob=await res.blob();
+const response=await fetch(apk);
+if(!response.ok)throw new Error();
+
+const blob=await response.blob();
 const url=URL.createObjectURL(blob);
 const a=document.createElement('a');
+
 a.href=url;
 a.download='student-income-v3.apk';
 document.body.appendChild(a);
 a.click();
 a.remove();
+
 btn.textContent='Complete';
 setTimeout(()=>URL.revokeObjectURL(url),60000);
-}catch(err){
-btn.textContent='Download';
-alert('Download failed. Please try again.');
+
+}catch(error){
+btn.textContent='Download Fail';
 }finally{
 btn.dataset.busy='0';
 }
 });
 </script>
+
 </body>
 </html>
